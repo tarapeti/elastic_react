@@ -10,7 +10,7 @@ const Edit = () => {
     axios
         .post("http://localhost:8080/getById", params )
         .then(res => {
-          setId(res.data.all);
+          console.log(res)
         })
         .catch(err =>  
             { console.log(err)})
