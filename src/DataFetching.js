@@ -1,25 +1,25 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import { JsonToTable } from "react-json-to-table";
-
-function DataFetching() {
-    const [articles, setArticles] = useState([])
-
-    useEffect(() => {
-        axios
-            .get("http://localhost:8080/all")
-            .then(res => {
-                setArticles(res.data.all);
-            })
-            .catch(err =>  
-                { console.log(err)})
-        }, [])
-
-    return (
-        <div className="Datafetching">
-            <JsonToTable json={articles} />
-        </div>
-    )
-}
-
-export default DataFetching;
+ 
+const Edit = () => {
+  const [id, setId] = useState([])
+ 
+  useEffect(() => {
+    var params = new URLSearchParams();
+    params.append('articleId', '6r217XAB5iOodh1RcFWh');
+    axios
+        .post("http://localhost:8080/getById", params )
+        .then(res => {
+          setId(res.data.all);
+        })
+        .catch(err =>  
+            { console.log(err)})
+    }, [])
+ 
+  return (
+    <form >
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+export default Edit;
